@@ -199,8 +199,10 @@
   @media (max-width: 820px) {
     .records, .projects { grid-template-columns: 1fr; }
     .entry { grid-template-columns: 1fr; gap: 10px; }
-    .nav nav { gap: 14px; }
-    .nav nav a:not(.gh):not(.skills-link) { display: none; }
+    .nav { padding: 14px 16px; gap: 12px; }
+    .nav nav { gap: 12px; }
+    .nav nav a { font-size: 10px; letter-spacing: 0.02em; }
+    .nav .name { font-size: 10px; }
     .hero { padding: 52px 0 48px; }
   }
 </style>
@@ -336,7 +338,7 @@
         <article class="project">
           <p class="eyebrow">Medical research</p>
           <h3>Biograph</h3>
-          <p>A citation-grounded medical research agent. Every claim in its output links to the source it came from, so answers are verifiable rather than plausible.</p>
+          <p>A citation-grounded medical research agent. Every claim in its output links to the source it came from, so every answer can be checked in one click.</p>
           <p class="stack">Cloudflare Workers · LLM orchestration · citation grounding</p>
           <a class="visit" href="https://biograph.pjayav.workers.dev">biograph.pjayav.workers.dev ↗</a>
         </article>
