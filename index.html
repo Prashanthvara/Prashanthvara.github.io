@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prashanth Varanasi · Enterprise implementation, compressed with AI</title>
+<meta name="description" content="Enterprise implementation operator who ships AI automation. Eight Claude Code skills that compress procurement and integration workflows from hours to minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F4F0;
+    --card: #FDFDFB;
+    --ink: #191B1C;
+    --muted: #5C615E;
+    --ledger: #1A5E45;
+    --ledger-tint: #E4ECE6;
+    --rule: #D9D7CE;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --sans: "Archivo", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
+  }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--ledger);
+    outline-offset: 3px;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  header.site {
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; max-width: 1060px; margin: 0 auto;
+  }
+  .nav .name {
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  }
+  .nav .name .tag { color: var(--ledger); }
+  .nav nav { display: flex; gap: 22px; }
+  .nav nav a {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none; color: var(--muted);
+  }
+  .nav nav a:hover { color: var(--ledger); }
+  .nav nav a.gh { color: var(--ink); font-weight: 600; }
+  .nav nav a.gh:hover { color: var(--ledger); }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--rule); }
+  .envelope {
+    font-family: var(--mono); font-size: 12px; color: var(--ledger);
+    letter-spacing: 0.04em; margin-bottom: 28px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .hero h1 {
+    font-size: clamp(38px, 6.2vw, 64px);
+    font-weight: 800; line-height: 1.04; letter-spacing: -0.025em;
+    max-width: 21ch;
+  }
+  .hero h1 .accent { color: var(--ledger); }
+  .hero p.lede {
+    max-width: 62ch; margin-top: 26px; font-size: 18px; color: var(--ink);
+  }
+  .proof { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .proof a {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.03em; text-decoration: none;
+    border: 1px solid var(--ink); padding: 12px 18px; background: var(--card);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .proof a .k { color: var(--ledger); }
+  .proof a:hover { background: var(--ink); color: var(--paper); }
+  .proof a:hover .k { color: #9FD4BC; }
+  .proof a.primary { background: var(--ledger); border-color: var(--ledger); color: var(--paper); }
+  .proof a.primary .k { color: #BFE3D1; }
+  .proof a.primary:hover { background: var(--ink); border-color: var(--ink); }
+
+  /* ---------- sections ---------- */
+  section { padding: 64px 0; border-bottom: 1px solid var(--rule); }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ledger);
+  }
+  section h2 {
+    font-size: clamp(26px, 3.6vw, 36px); font-weight: 800;
+    letter-spacing: -0.02em; margin-top: 6px;
+  }
+  .sec-note { max-width: 66ch; color: var(--muted); margin: 14px 0 36px; }
+
+  /* ---------- skill records ---------- */
+  .records { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .record {
+    background: var(--card); border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    transition: border-color 0.15s ease;
+  }
+  .record:hover { border-color: var(--ledger); }
+  .record .seg {
+    font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+    color: var(--ledger); background: var(--ledger-tint);
+    padding: 8px 16px; border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.03em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .record .body { padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .record h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .record h3 a { text-decoration: none; }
+  .record h3 a:hover { color: var(--ledger); text-decoration: underline; text-underline-offset: 3px; }
+  .record p { font-size: 15px; color: var(--muted); }
+  .record .io {
+    font-family: var(--mono); font-size: 12px; color: var(--ink);
+    border-top: 1px dashed var(--rule); padding-top: 10px; margin-top: auto;
+    line-height: 1.7; overflow-x: auto;
+  }
+  .record .io b { font-weight: 600; color: var(--ledger); }
+  .record .base { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .record .base strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- projects ---------- */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .project {
+    background: var(--card); border: 1px solid var(--rule); padding: 22px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: border-color 0.15s ease;
+  }
+  .project:hover { border-color: var(--ledger); }
+  .project .eyebrow { font-size: 11px; }
+  .project h3 { font-size: 19px; font-weight: 700; }
+  .project p { font-size: 15px; color: var(--muted); flex: 1; }
+  .project .stack { font-family: var(--mono); font-size: 11.5px; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+  .project a.visit {
+    font-family: var(--mono); font-size: 12.5px; font-weight: 600;
+    color: var(--ledger); text-decoration: none; letter-spacing: 0.03em;
+  }
+  .project a.visit:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- audit trail ---------- */
+  .trail { display: flex; flex-direction: column; }
+  .entry {
+    display: grid; grid-template-columns: 260px 1fr; gap: 24px;
+    padding: 26px 0; border-top: 1px solid var(--rule);
+  }
+  .entry:first-of-type { border-top: none; padding-top: 8px; }
+  .entry .org h3 { font-size: 18px; font-weight: 700; }
+  .entry .org .role { font-family: var(--mono); font-size: 12px; color: var(--ledger); margin-top: 4px; letter-spacing: 0.03em; }
+  .entry ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .entry li { font-size: 15.5px; color: var(--ink); padding-left: 18px; position: relative; }
+  .entry li::before {
+    content: ""; position: absolute; left: 0; top: 0.62em;
+    width: 7px; height: 7px; background: var(--ledger);
+  }
+
+  /* ---------- footer ---------- */
+  footer { padding: 56px 0 72px; }
+  footer .envelope { margin-bottom: 20px; }
+  footer .links { display: flex; flex-wrap: wrap; gap: 24px; }
+  footer .links a {
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none;
+  }
+  footer .links a:hover { color: var(--ledger); text-decoration: underline; text-underline-offset: 3px; }
+  footer p.fine { margin-top: 26px; font-size: 13px; color: var(--muted); max-width: 60ch; }
+
+  @media (max-width: 820px) {
+    .records, .projects { grid-template-columns: 1fr; }
+    .entry { grid-template-columns: 1fr; gap: 10px; }
+    .nav nav { gap: 14px; }
+    .nav nav a:not(.gh):not(.skills-link) { display: none; }
+    .hero { padding: 52px 0 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <a class="name" href="#top">Varanasi<span class="tag">*P</span></a>
+    <nav aria-label="Site">
+      <a class="skills-link" href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#trail">Audit&nbsp;trail</a>
+      <a class="gh" href="https://github.com/Prashanthvara/cs-automation-skills">GitHub&nbsp;↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="hero">
+      <p class="envelope" aria-hidden="true">ISA*00*&nbsp;&nbsp;*ZZ*VARANASI&nbsp;P*01*ENTERPRISE&nbsp;IMPL*260704*PORTFOLIO*U*00401*000000001*0*P*&gt;~</p>
+      <h1>Enterprise implementation, <span class="accent">compressed</span>&nbsp;with&nbsp;AI.</h1>
+      <p class="lede">I have run enterprise procurement implementations for seven years across Coupa, Ariba, NetSuite, and Workday, spanning cXML, OCI, EDI, API, SFTP, and CSV integrations. At Varis I carried 48 concurrent implementations. At Amazon Business I managed 150+ enterprise accounts and cut API onboarding time 30% through request log diagnosis. Now I encode those workflows as Claude Code skills that finish in minutes what took hours by hand.</p>
+      <div class="proof">
+        <a class="primary" href="https://github.com/Prashanthvara/cs-automation-skills"><span class="k">01</span> CS Automation Skills ↗</a>
+        <a href="https://biograph.pjayav.workers.dev"><span class="k">02</span> Biograph ↗</a>
+        <a href="https://twelvelabs.pjayav.workers.dev"><span class="k">03</span> Semantic Video Search ↗</a>
+      </div>
+    </div>
+
+    <section id="skills">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Transaction set · 8 records</p>
+          <h2>One skill per recurring workflow</h2>
+        </div>
+      </div>
+      <p class="sec-note">Each skill encodes a workflow I have run hundreds of times. It reads the same inputs I handled manually, applies the same checks, and produces the artifact I used to assemble by hand. Every record below links to its source on GitHub, and all repository data is synthetic.</p>
+
+      <div class="records">
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK01*QBR-GENERATOR~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/qbr-generator">QBR Generator</a></h3>
+            <p>Turns raw order, support, and adoption exports into a quarterly business review package: health narrative, executive summary, and a slide-by-slide deck outline where every slide carries one verified number.</p>
+            <p class="base">BASELINE <strong>3–4 hr per account</strong> → minutes</p>
+            <p class="io"><b>IN</b> orders.csv · support.csv · adoption.csv<br><b>OUT</b> exec summary · health analysis · deck outline</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK02*ACCOUNT-HEALTH-SCORER~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/account-health-scorer">Account Health Scorer</a></h3>
+            <p>Scores a full portfolio export for churn risk and expansion signal, with renewal proximity as a risk multiplier. Outputs four triage queues and a capped weekly action list with per-account reason codes.</p>
+            <p class="base">BASELINE <strong>half day per review</strong> → minutes</p>
+            <p class="io"><b>IN</b> portfolio.csv · context overrides<br><b>OUT</b> ranked queues · weekly action list</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK03*PUNCHOUT-TROUBLESHOOTER~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/punchout-troubleshooter">Punchout Troubleshooter</a></h3>
+            <p>Diagnoses cXML and OCI punchout failures between procurement platforms and supplier sites. Classifies the failing layer, quotes the exact evidence line from the payload, and names the fix owner.</p>
+            <p class="base">BASELINE <strong>1–3 hr per incident</strong> → minutes</p>
+            <p class="io"><b>IN</b> POSR/POSResponse payloads · symptom<br><b>OUT</b> diagnosis · fix owner · verification test</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK04*API-ONBOARDING-DIAGNOSTICIAN~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/api-onboarding-diagnostician">API Onboarding Diagnostician</a></h3>
+            <p>Buckets API request logs from a stuck onboarding by endpoint, status, and error signature, then matches the dominant pattern against known failure classes. Drafts the engineering ticket and the customer update in one pass.</p>
+            <p class="base">BASELINE <strong>hours per escalation</strong> → minutes</p>
+            <p class="io"><b>IN</b> JSON/HAR logs · auth context<br><b>OUT</b> root cause · eng ticket · customer note</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK05*INTEGRATION-RUNBOOK-BUILDER~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/integration-runbook-builder">Integration Runbook Builder</a></h3>
+            <p>Generates the protocol-specific runbook that carries an integration from kickoff to go-live: connection setup, field mapping with named owners, a test plan of verifiable assertions, and the cutover checklist.</p>
+            <p class="base">BASELINE <strong>1–2 days per doc</strong> → minutes</p>
+            <p class="io"><b>IN</b> protocol · document flows · environments<br><b>OUT</b> full runbook · mapping table · test plan</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK06*COMPLIANCE-CONFIGURATOR~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/compliance-restriction-configurator">Compliance Restriction Configurator</a></h3>
+            <p>Converts a written purchasing mandate into a machine-applied restriction set with full provenance: every blocked supplier and category maps back to its source clause, plus probe searches that verify the block took effect.</p>
+            <p class="base">BASELINE <strong>hours per account</strong> → minutes</p>
+            <p class="io"><b>IN</b> policy text · catalog taxonomy<br><b>OUT</b> config.json · audit table · probes</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK07*VERTICAL-ONBOARDING-PLAYBOOKS~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/vertical-onboarding-playbooks">Vertical Onboarding Playbooks</a></h3>
+            <p>Replaces the generic 80-question intake packet with one scoped to the customer's vertical. Every question traces to a configuration decision it unblocks, and legal or IT dependencies get flagged on day one.</p>
+            <p class="base">BASELINE <strong>weeks of back-and-forth</strong> → days</p>
+            <p class="io"><b>IN</b> vertical · deployment scope<br><b>OUT</b> customer packet · completion tracker</p>
+          </div>
+        </article>
+
+        <article class="record">
+          <p class="seg" aria-hidden="true">ST*SK08*CATALOG-ENRICHMENT-PIPELINE~</p>
+          <div class="body">
+            <h3><a href="https://github.com/Prashanthvara/cs-automation-skills/tree/main/catalog-enrichment-pipeline">Catalog Enrichment Pipeline</a></h3>
+            <p>Profiles a raw supplier feed, normalizes units and part numbers, maps items into the target taxonomy with logged confidence, and emits a supplier remediation report ranked by order impact. No attribute is ever fabricated.</p>
+            <p class="base">BASELINE <strong>ongoing manual upkeep</strong> → pipeline</p>
+            <p class="io"><b>IN</b> supplier feed · target taxonomy<br><b>OUT</b> enriched CSV · completeness report</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="eyebrow">Shipped · 3 records</p>
+      <h2>Projects in production</h2>
+      <p class="sec-note">Working software with live URLs, built end to end: problem framing, architecture, implementation, deployment.</p>
+
+      <div class="projects">
+        <article class="project">
+          <p class="eyebrow">Medical research</p>
+          <h3>Biograph</h3>
+          <p>A citation-grounded medical research agent. Every claim in its output links to the source it came from, so answers are verifiable rather than plausible.</p>
+          <p class="stack">Cloudflare Workers · LLM orchestration · citation grounding</p>
+          <a class="visit" href="https://biograph.pjayav.workers.dev">biograph.pjayav.workers.dev ↗</a>
+        </article>
+        <article class="project">
+          <p class="eyebrow">Video understanding</p>
+          <h3>Semantic Video Search</h3>
+          <p>Natural-language search inside video content, built on the TwelveLabs video understanding API. Query a moment, land on the timestamp.</p>
+          <p class="stack">Cloudflare Workers · TwelveLabs API</p>
+          <a class="visit" href="https://twelvelabs.pjayav.workers.dev">twelvelabs.pjayav.workers.dev ↗</a>
+        </article>
+        <article class="project">
+          <p class="eyebrow">Agent skills</p>
+          <h3>CS Automation Skills</h3>
+          <p>The repository behind the records above: eight Claude Code skills automating enterprise customer success workflows, each small enough to audit in one sitting.</p>
+          <p class="stack">Claude Code · Python · synthetic fixtures</p>
+          <a class="visit" href="https://github.com/Prashanthvara/cs-automation-skills">github.com/Prashanthvara ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="trail">
+      <p class="eyebrow">Career · Audit trail</p>
+      <h2>Every claim, attributed</h2>
+      <p class="sec-note">Seven years across enterprise procurement and B2B integration. Each metric below belongs to the employer it sits under.</p>
+
+      <div class="trail">
+        <div class="entry">
+          <div class="org">
+            <h3>Amazon Business</h3>
+            <p class="role">Customer Success Manager</p>
+          </div>
+          <ul>
+            <li>Managed 150+ enterprise accounts across healthcare, government, and retail.</li>
+            <li>Diagnosed API onboarding failures through request and response log analysis, reducing onboarding time 30% and increasing API adoption.</li>
+            <li>Built Python and API compliance automation for federal supplier blocking and education category restrictions, cutting account configuration from hours to minutes across 200+ accounts.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="org">
+            <h3>Varis</h3>
+            <p class="role">Lead Implementation Consultant</p>
+          </div>
+          <ul>
+            <li>Carried 48 concurrent enterprise procurement implementations representing $14M in managed-spend revenue.</li>
+            <li>Overhauled the implementation playbook, reducing go-live and integration time 40%.</li>
+            <li>Led a 380+ location automotive rollout, migrating $8M in annual tail spend and cutting service turnaround from 4 days to 2.</li>
+            <li>Built vertical onboarding playbooks for healthcare, government, and education that cut customer response time from weeks to under 5 days.</li>
+            <li>Managed two Implementation Support Specialists, one promoted within 18 months.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="org">
+            <h3>MUC Holdings</h3>
+            <p class="role">Solutions Architect</p>
+          </div>
+          <ul>
+            <li>Delivered 28 client onboardings end to end.</li>
+            <li>Rebuilt invoice and payment approval as a mobile-first flow, lifting engagement 14% and adding $400K in quarterly revenue.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="org">
+            <h3>Infosys</h3>
+            <p class="role">Technology Analyst</p>
+          </div>
+          <ul>
+            <li>Built lead conversion models that cut marketing spend 8% while raising conversion 16%.</li>
+            <li>Applied NLP to customer interaction data, contributing to a 26% sales increase.</li>
+            <li>Ran cohort and customer-lifetime-value analysis that reduced churn 12%.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="envelope" aria-hidden="true">SE*1*000000001~&nbsp;&nbsp;IEA*1*000000001~</p>
+    <div class="links">
+      <a href="https://linkedin.com/in/pjaya">LinkedIn ↗</a>
+      <a href="https://github.com/Prashanthvara">GitHub ↗</a>
+      <a href="mailto:prashanthjayavaradhan@gmail.com">Email</a>
+    </div>
+    <p class="fine">All skill repositories use synthetic or sanitized data. Nothing on this site includes employer-proprietary data, account information, or internal tooling.</p>
+  </div>
+</footer>
+
+</body>
+</html>
